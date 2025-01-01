@@ -3,6 +3,7 @@ import "./global.css";
 import { useFonts } from "expo-font";
 import { useEffect } from "react";
 import { Text, View } from "react-native";
+import GlobalProvider from "@/lib/global-provider";
 
 export default function RootLayout() {
   const [fontsLoaded, error] = useFonts({
@@ -30,5 +31,9 @@ export default function RootLayout() {
     );
   }
 
-  return <Stack screenOptions={{ headerShown: false }} />;
+  return (
+    <GlobalProvider>
+      <Stack screenOptions={{ headerShown: false }} />;
+    </GlobalProvider>
+  );
 }
